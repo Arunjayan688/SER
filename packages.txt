@@ -1,3 +1,2 @@
-libasound
-portaudio
-pyaudio
+portaudio19-dev
+
