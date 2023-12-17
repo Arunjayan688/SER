@@ -101,12 +101,8 @@ def main():
         # Make prediction using the loaded model
         prediction = model.predict(features)[0]
 
-        st.subheader("Predicted Emotions:")
-        st.write("<div style='padding: 10px; background-color: #f4f4f4; border-radius: 5px;'>", unsafe_allow_html=True)
-        for emotion in predictions:
-            styled_emotion = f"<span style='margin-right: 10px; padding: 5px; background-color: #3498db; color: #fff; border-radius: 3px; text-transform: uppercase; font-size: 22px;'>{emotion}</span>"
-            st.write(styled_emotion, unsafe_allow_html=True)
-        st.write("</div>", unsafe_allow_html=True)
+        # Display the predicted emotion
+        st.subheader(f"Predicted Emotion: {prediction}")
 
       
 
