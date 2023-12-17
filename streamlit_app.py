@@ -59,33 +59,32 @@ def main():
     st.title("Speech Emotion Recognition App")
     st.markdown(
         """
-        This app predicts the emotion in an audio recording. You can either upload an audio file or record audio 
-        using the 'Record Audio' button.
+        This app predicts the emotion in an audio recording. You can  upload an audio file .
         """
     )
 
-    # Record audio button
-    if st.button("Record Audio"):
-        st.write("Recording... Speak now!")
+    # # Record audio button
+    # if st.button("Record Audio"):
+    #     st.write("Recording... Speak now!")
         
-        # Use the default device index (0) or update it based on the available devices
-        recording, sample_rate = record_audio()
-        st.write("Recording complete!")
+    #     # Use the default device index (0) or update it based on the available devices
+    #     recording, sample_rate = record_audio()
+    #     st.write("Recording complete!")
 
-        # Extract features from the recorded audio
-        features = extract_features(recording, sample_rate, mfcc=True, chroma=True, mel=True)
+    #     # Extract features from the recorded audio
+    #     features = extract_features(recording, sample_rate, mfcc=True, chroma=True, mel=True)
 
-        # Reshape features to match the model's input shape
-        features = features.reshape(1, -1)
+    #     # Reshape features to match the model's input shape
+    #     features = features.reshape(1, -1)
 
-        # Make prediction using the loaded model
-        prediction = model.predict(features)[0]
+    #     # Make prediction using the loaded model
+    #     prediction = model.predict(features)[0]
 
-        # Display the predicted emotion
-        st.subheader(f"Predicted Emotion: {prediction}")
+    #     # Display the predicted emotion
+    #     st.subheader(f"Predicted Emotion: {prediction}")
 
-        # Display audio waveform
-        plot_waveform(recording, sample_rate)
+    #     # Display audio waveform
+    #     plot_waveform(recording, sample_rate)
 
     # Display the audio file if uploaded
     uploaded_file = st.file_uploader("Or upload an audio file (in WAV format)", type=["wav"])
