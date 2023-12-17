@@ -29,10 +29,21 @@ def extract_features(y, sr, mfcc=True, chroma=True, mel=True):
 
     return np.concatenate(features)
 
-def record_audio():
+def record_audio(device_index=0):
     seconds = 5
     sample_rate = 44100
-    recording = sd.rec(int(sample_rate * seconds), samplerate=sample_rate, channels=1, dtype=np.float32)
+
+    # Print available devices
+    devices = sd.query_devices()
+    print(devices)
+
+    recording = sd.rec(
+        int(sample_rate * seconds),
+        samplerate=sample_rate,
+        channels=1,
+        dtype=np.float32,
+        device=device_index
+    )
     sd.wait()
     return recording.flatten(), sample_rate
 
@@ -56,6 +67,8 @@ def main():
     # Record audio button
     if st.button("Record Audio"):
         st.write("Recording... Speak now!")
+        
+        # Use the default device index (0) or update it based on the available devices
         recording, sample_rate = record_audio()
         st.write("Recording complete!")
 
