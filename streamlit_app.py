@@ -29,31 +29,31 @@ def extract_features(y, sr, mfcc=True, chroma=True, mel=True):
 
     return np.concatenate(features)
 
-def record_audio(device_index=0):
-    seconds = 5
-    sample_rate = 44100
+# def record_audio(device_index=0):
+#     seconds = 5
+#     sample_rate = 44100
 
-    # Print available devices
-    devices = sd.query_devices()
-    print(devices)
+#     # Print available devices
+#     devices = sd.query_devices()
+#     print(devices)
 
-    recording = sd.rec(
-        int(sample_rate * seconds),
-        samplerate=sample_rate,
-        channels=1,
-        dtype=np.float32,
-        device=device_index
-    )
-    sd.wait()
-    return recording.flatten(), sample_rate
+#     recording = sd.rec(
+#         int(sample_rate * seconds),
+#         samplerate=sample_rate,
+#         channels=1,
+#         dtype=np.float32,
+#         device=device_index
+#     )
+#     sd.wait()
+#     return recording.flatten(), sample_rate
 
-def plot_waveform(y, sr):
-    plt.figure(figsize=(10, 4))
-    plt.plot(np.linspace(0, len(y) / sr, num=len(y)), y)
-    plt.title('Audio Waveform')
-    plt.xlabel('Time (s)')
-    plt.ylabel('Amplitude')
-    st.pyplot(plt)
+# def plot_waveform(y, sr):
+#     plt.figure(figsize=(10, 4))
+#     plt.plot(np.linspace(0, len(y) / sr, num=len(y)), y)
+#     plt.title('Audio Waveform')
+#     plt.xlabel('Time (s)')
+#     plt.ylabel('Amplitude')
+#     st.pyplot(plt)
 
 def main():
     st.title("Speech Emotion Recognition App")
