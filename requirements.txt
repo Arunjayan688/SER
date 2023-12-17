@@ -1,5 +1,6 @@
 numpy
 soundfile
+sounddevice
 librosa
 scikit-learn
 joblib
